@@ -1,0 +1,11 @@
+pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
+plugins { id("com.facebook.react.settings") }
+def autolinkFile = file("autolinking.json")
+if (autolinkFile.exists()) {
+    extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromConfigFile(autolinkFile) }
+} else {
+    extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
+}
+rootProject.name = 'WeatherApp'
+include ':app'
+includeBuild('../node_modules/@react-native/gradle-plugin')
